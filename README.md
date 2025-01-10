@@ -1,4 +1,4 @@
-# 🎨 FórumHub: Construye y Conecta Ideas 📚
+# 🎨 ForoHub: Construye y Conecta Ideas 📚
 
 ![Logo de ForoHub](https://via.placeholder.com/600x200.png?text=F%C3%B3rumHub+Logo)
 
