@@ -60,4 +60,10 @@ public class RespuestaDTO {
     public void setAutorId(Long autorId) {
         this.autorId = autorId;
     }
+
+    public Object toEntity() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'toEntity'");
+    }
+
 }

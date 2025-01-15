@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CursoRepository extends JpaRepository<Curso, Integer> {
-
+    // No es necesario definir métodos adicionales aquí, ya que JpaRepository proporciona métodos CRUD básicos
 }

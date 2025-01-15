@@ -1,19 +1,18 @@
 package com.githubmoore.challenge_foro_hub.exception;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class ErrorDetails {
     private int statusCode;
     private String message;
     private String details;
-    private Date timestamp;
+    private LocalDateTime timestamp;
 
     public ErrorDetails(int statusCode, String message, String details) {
-        super();
         this.statusCode = statusCode;
         this.message = message;
         this.details = details;
-        this.timestamp = new Date();
+        this.timestamp = LocalDateTime.now();
     }
 
     public int getStatusCode() {
@@ -40,11 +39,11 @@ public class ErrorDetails {
         this.details = details;
     }
 
-    public Date getTimestamp() {
+    public LocalDateTime getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(Date timestamp) {
+    public void setTimestamp(LocalDateTime timestamp) {
         this.timestamp = timestamp;
     }
 }

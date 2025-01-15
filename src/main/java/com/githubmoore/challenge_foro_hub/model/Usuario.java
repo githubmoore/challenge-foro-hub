@@ -1,34 +1,107 @@
 package com.githubmoore.challenge_foro_hub.model;
 
 import jakarta.persistence.*;
-import java.util.List;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 @Entity
-@Table(name = "Usuario")
 public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
-    @Column(nullable = false, length = 50)
+    @NotBlank
+    @Size(max = 100)
     private String nombre;
 
-    @Column(nullable = false, length = 100, unique = true)
-    private String correoElectronico;
+    @NotBlank
+    @Email
+    @Size(max = 100)
+    private String email;
 
-    @Column(nullable = false)
-    private String contrasena;
+    @NotBlank
+    @Size(max = 100)
+    private String password;
 
-    @Column(nullable = false)
-    private Integer perfiles;
+    @Enumerated(EnumType.STRING)
+    private Perfil perfil;
 
-    @OneToMany(mappedBy = "autor", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Topico> topicos;
+    // Constructores
+    public Usuario() {}
 
-    @OneToMany(mappedBy = "autor", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Respuesta> respuestas;
+    public Usuario(Long id, String nombre, String email, String password, Perfil perfil) {
+        this.id = id;
+        this.nombre = nombre;
+        this.email = email;
+        this.password = password;
+        this.perfil = perfil;
+    }
 
-    // Getters and Setters
+    // Getters y Setters
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Perfil getPerfil() {
+        return perfil;
+    }
+
+    public void setPerfil(Perfil perfil) {
+        this.perfil = perfil;
+    }
+
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", email='" + email + '\'' +
+                ", perfil=" + perfil +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Usuario usuario = (Usuario) o;
+
+        return id != null ? id.equals(usuario.id) : usuario.id == null;
+    }
+
+    @Override
+    public int hashCode() {
+        return id != null ? id.hashCode() : 0;
+    }
 }
-

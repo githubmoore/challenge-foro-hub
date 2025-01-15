@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'org.springframework.boot' version '3.4.1'
     id 'io.spring.dependency-management' version '1.1.7'
+    id 'org.flywaydb.flyway' version '9.8.1'
 }
 
 group = 'com.githubmoore'
@@ -52,7 +53,6 @@ flyway {
     locations = ['classpath:db/migration']
 }
 
-// Configuración adicional para Spring Boot
 bootJar {
-    mainClassName = 'com.githubmoore.challenge_foro_hub.ChallengeForoHubApplication'
+    mainClass.set('com.githubmoore.challenge_foro_hub.ChallengeForoHubApplication')
 }

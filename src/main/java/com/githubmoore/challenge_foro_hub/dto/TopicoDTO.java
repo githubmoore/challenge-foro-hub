@@ -1,13 +1,26 @@
 package com.githubmoore.challenge_foro_hub.dto;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import java.time.LocalDateTime;
 
 public class TopicoDTO {
     private Long id;
+
+    @NotBlank
+    @Size(max = 255)
     private String titulo;
+
+    @NotBlank
+    @Size(max = 1000)
     private String mensaje;
+
     private LocalDateTime fechaCreacion;
+
+    @NotBlank
+    @Size(max = 50)
     private String estado;
+
     private Long cursoId;
     private Long autorId;
 
@@ -79,5 +92,46 @@ public class TopicoDTO {
 
     public void setAutorId(Long autorId) {
         this.autorId = autorId;
+    }
+
+    @Override
+    public String toString() {
+        return "TopicoDTO{" +
+                "id=" + id +
+                ", titulo='" + titulo + '\'' +
+                ", mensaje='" + mensaje + '\'' +
+                ", fechaCreacion=" + fechaCreacion +
+                ", estado='" + estado + '\'' +
+                ", cursoId=" + cursoId +
+                ", autorId=" + autorId +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        TopicoDTO topicoDTO = (TopicoDTO) o;
+
+        if (id != null ? !id.equals(topicoDTO.id) : topicoDTO.id != null) return false;
+        if (titulo != null ? !titulo.equals(topicoDTO.titulo) : topicoDTO.titulo != null) return false;
+        if (mensaje != null ? !mensaje.equals(topicoDTO.mensaje) : topicoDTO.mensaje != null) return false;
+        if (fechaCreacion != null ? !fechaCreacion.equals(topicoDTO.fechaCreacion) : topicoDTO.fechaCreacion != null) return false;
+        if (estado != null ? !estado.equals(topicoDTO.estado) : topicoDTO.estado != null) return false;
+        if (cursoId != null ? !cursoId.equals(topicoDTO.cursoId) : topicoDTO.cursoId != null) return false;
+        return autorId != null ? autorId.equals(topicoDTO.autorId) : topicoDTO.autorId == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (titulo != null ? titulo.hashCode() : 0);
+        result = 31 * result + (mensaje != null ? mensaje.hashCode() : 0);
+        result = 31 * result + (fechaCreacion != null ? fechaCreacion.hashCode() : 0);
+        result = 31 * result + (estado != null ? estado.hashCode() : 0);
+        result = 31 * result + (cursoId != null ? cursoId.hashCode() : 0);
+        result = 31 * result + (autorId != null ? autorId.hashCode() : 0);
+        return result;
     }
 }
