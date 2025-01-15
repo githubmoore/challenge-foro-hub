@@ -35,12 +35,12 @@ Bienvenido al repositorio de **ForoHub**, la plataforma de foros donde puedes co
    ```
 
 2. Configura la base de datos:
-   - Crea una base de datos MySQL llamada `forumhub`.
+   - Crea una base de datos MySQL llamada `forohub`.
    - Configura las credenciales en `src/main/resources/application.properties`:
      ```properties
-     spring.datasource.url=jdbc:mysql://localhost:3306/forumhub
-     spring.datasource.username=tu_usuario
-     spring.datasource.password=tu_contraseña
+     spring.datasource.url=jdbc:mysql://localhost:3306/forohub
+     spring.datasource.username=root
+     spring.datasource.password=root
      ```
 
 3. Ejecuta el proyecto:
@@ -72,7 +72,6 @@ Bienvenido al repositorio de **ForoHub**, la plataforma de foros donde puedes co
 
 ## 🎨 Base de Datos
 
-![Diagrama de la Base de Datos](https://via.placeholder.com/800x400.png?text=Diagrama+Base+de+Datos)
 
 La tabla principal es `topicos`, que contiene los campos:
 
