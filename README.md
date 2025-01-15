@@ -85,6 +85,23 @@ La tabla principal es `topicos`, que contiene los campos:
 - `autor`
 - `curso`
 
+# Configuración de la Base de Datos de ForoHub
+
+Esta carpeta contiene el script SQL para inicializar una base de datos MySQL limpia para el proyecto ForoHub.
+
+## Instrucciones
+
+1. **Asegúrate de tener MySQL instalado**:
+   Si no tienes MySQL instalado, descárgalo e instálalo en tu sistema.
+
+2. **Abre el cliente de MySQL**:
+   Puedes usar el cliente de línea de comandos de MySQL o una herramienta gráfica como MySQL Workbench.
+
+3. **Ejecuta el script**:
+   Utiliza el siguiente comando en tu terminal para ejecutar el script:
+   ```bash
+   mysql -u root -p < forohub-init.sql
+
 ---
 
 ## 💡 Tips y Trucos

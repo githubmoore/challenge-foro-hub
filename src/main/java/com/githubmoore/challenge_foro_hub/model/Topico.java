@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import com.githubmoore.challenge_foro_hub.dto.TopicoDTO;
+
 @Entity
 @Table(name = "Topico")
 public class Topico {
@@ -27,7 +29,7 @@ public class Topico {
 
     @ManyToOne
     @JoinColumn(name = "autor", nullable = false)
-    private Usuario autor;
+    private Topico autor;
 
     @ManyToOne
     @JoinColumn(name = "curso", nullable = false)
@@ -81,14 +83,6 @@ public class Topico {
         this.status = status;
     }
 
-    public Usuario getAutor() {
-        return autor;
-    }
-
-    public void setAutor(Usuario autor) {
-        this.autor = autor;
-    }
-
     public Curso getCurso() {
         return curso;
     }
@@ -103,5 +97,14 @@ public class Topico {
 
     public void setRespuestas(List<Respuesta> respuestas) {
         this.respuestas = respuestas;
+    }
+
+    public void setAutor(Topico autorTopico) {
+       this.autor = autorTopico;
+    }
+
+    public TopicoDTO getAutor() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getAutor'");
     }
 }

@@ -3,6 +3,8 @@ package com.githubmoore.challenge_foro_hub.service;
 import com.githubmoore.challenge_foro_hub.dto.TopicoDTO;
 import com.githubmoore.challenge_foro_hub.model.Topico;
 import com.githubmoore.challenge_foro_hub.repository.TopicoRepository;
+import com.githubmoore.challenge_foro_hub.repository.CursoRepository;
+import com.githubmoore.challenge_foro_hub.repository.UsuarioRepository;
 import com.githubmoore.challenge_foro_hub.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +17,12 @@ public class TopicoService {
 
     @Autowired
     private TopicoRepository topicoRepository;
+
+    @Autowired
+    private CursoRepository cursoRepository;
+
+    @Autowired
+    private UsuarioRepository usuarioRepository;
 
     public List<TopicoDTO> getAllTopicos() {
         List<Topico> topicos = topicoRepository.findAll();
@@ -38,6 +46,8 @@ public class TopicoService {
         topico.setMensaje(topicoDTO.getMensaje());
         topico.setFechaCreacion(topicoDTO.getFechaCreacion());
         topico.setStatus(Topico.Status.valueOf(topicoDTO.getEstado()));
+        topico.setCurso(cursoRepository.findById(topicoDTO.getCursoId().intValue()).orElseThrow(() -> new ResourceNotFoundException("Curso not found with id " + topicoDTO.getCursoId())));
+        topico.setAutor(usuarioRepository.getById(topicoDTO.getAutorId().intValue()).orElseThrow(() -> new ResourceNotFoundException("Usuario not found with id " + topicoDTO.getAutorId())));
         Topico updatedTopico = topicoRepository.save(topico);
         return mapToDTO(updatedTopico);
     }
@@ -65,6 +75,8 @@ public class TopicoService {
         topico.setMensaje(topicoDTO.getMensaje());
         topico.setFechaCreacion(topicoDTO.getFechaCreacion());
         topico.setStatus(Topico.Status.valueOf(topicoDTO.getEstado()));
+        topico.setCurso(cursoRepository.findById(topicoDTO.getCursoId().intValue()).orElseThrow(() -> new ResourceNotFoundException("Curso not found with id " + topicoDTO.getCursoId())));
+        topico.setAutor(usuarioRepository.getById(topicoDTO.getAutorId().intValue()).orElseThrow(() -> new ResourceNotFoundException("Usuario not found with id " + topicoDTO.getAutorId())));
         return topico;
     }
 }

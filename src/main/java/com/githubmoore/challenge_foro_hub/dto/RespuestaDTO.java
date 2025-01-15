@@ -3,16 +3,16 @@ package com.githubmoore.challenge_foro_hub.dto;
 import java.time.LocalDateTime;
 
 public class RespuestaDTO {
-    private Long id;
+    private Integer id;
     private String mensaje;
     private LocalDateTime fechaCreacion;
-    private Long topicoId;
+    private Integer topicoId;
     private Long autorId;
 
     // Constructores
     public RespuestaDTO() {}
 
-    public RespuestaDTO(Long id, String mensaje, LocalDateTime fechaCreacion, Long topicoId, Long autorId) {
+    public RespuestaDTO(Integer id, String mensaje, LocalDateTime fechaCreacion, Integer topicoId, Long autorId) {
         this.id = id;
         this.mensaje = mensaje;
         this.fechaCreacion = fechaCreacion;
@@ -21,11 +21,11 @@ public class RespuestaDTO {
     }
 
     // Getters y Setters
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -45,11 +45,11 @@ public class RespuestaDTO {
         this.fechaCreacion = fechaCreacion;
     }
 
-    public Long getTopicoId() {
+    public Integer getTopicoId() {
         return topicoId;
     }
 
-    public void setTopicoId(Long topicoId) {
+    public void setTopicoId(Integer topicoId) {
         this.topicoId = topicoId;
     }
 
@@ -62,8 +62,15 @@ public class RespuestaDTO {
     }
 
     public Object toEntity() {
-        // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'toEntity'");
+    }
+
+    public void setSolucion(Boolean solucion) {
+        this.setSolucion(solucion);
+    }
+
+    public Boolean getSolucion() {
+        return getSolucion();
     }
 
 }
