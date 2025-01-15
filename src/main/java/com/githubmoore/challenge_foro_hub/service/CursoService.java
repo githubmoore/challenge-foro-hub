@@ -14,14 +14,14 @@ import java.util.stream.Collectors;
 public class CursoService {
 
     @Autowired
-    private CursoRepository cursoRepository;
+    public CursoRepository cursoRepository;
 
     public List<CursoDTO> getAllCursos() {
         List<Curso> cursos = cursoRepository.findAll();
         return cursos.stream().map(this::mapToDTO).collect(Collectors.toList());
     }
 
-    public CursoDTO getCursoById(Long id) {
+    public CursoDTO getCursoById(Integer id) {
         Curso curso = cursoRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Curso not found with id " + id));
         return mapToDTO(curso);
     }
@@ -32,7 +32,7 @@ public class CursoService {
         return mapToDTO(savedCurso);
     }
 
-    public CursoDTO updateCurso(Long id, CursoDTO cursoDTO) {
+    public CursoDTO updateCurso(Integer id, CursoDTO cursoDTO) {
         Curso curso = cursoRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Curso not found with id " + id));
         curso.setNombre(cursoDTO.getNombre());
         curso.setDescripcion(cursoDTO.getDescripcion());
@@ -40,11 +40,11 @@ public class CursoService {
         return mapToDTO(updatedCurso);
     }
 
-    public void deleteCurso(Long id) {
+    public void deleteCurso(Integer id) {
         cursoRepository.deleteById(id);
     }
 
-    private CursoDTO mapToDTO(Curso curso) {
+    public CursoDTO mapToDTO(Curso curso) {
         CursoDTO cursoDTO = new CursoDTO();
         cursoDTO.setId(curso.getId().longValue()); // Convertir Integer a Long
         cursoDTO.setNombre(curso.getNombre());
@@ -52,7 +52,7 @@ public class CursoService {
         return cursoDTO;
     }
 
-    private Curso mapToEntity(CursoDTO cursoDTO) {
+    public Curso mapToEntity(CursoDTO cursoDTO) {
         Curso curso = new Curso();
         curso.setId(cursoDTO.getId().intValue()); // Convertir Long a Integer
         curso.setNombre(cursoDTO.getNombre());

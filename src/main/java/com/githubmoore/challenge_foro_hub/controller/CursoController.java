@@ -22,7 +22,7 @@ public class CursoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<CursoDTO> getCursoById(@PathVariable Long id) {
+    public ResponseEntity<CursoDTO> getCursoById(@PathVariable Integer id) {
         CursoDTO curso = cursoService.getCursoById(id);
         return ResponseEntity.ok(curso);
     }
@@ -34,13 +34,13 @@ public class CursoController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<CursoDTO> updateCurso(@PathVariable Long id, @RequestBody CursoDTO cursoDTO) {
+    public ResponseEntity<CursoDTO> updateCurso(@PathVariable Integer id, @RequestBody CursoDTO cursoDTO) {
         CursoDTO updatedCurso = cursoService.updateCurso(id, cursoDTO);
         return ResponseEntity.ok(updatedCurso);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteCurso(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteCurso(@PathVariable Integer id) {
         cursoService.deleteCurso(id);
         return ResponseEntity.noContent().build();
     }

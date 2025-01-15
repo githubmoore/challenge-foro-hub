@@ -17,6 +17,9 @@ public class Curso {
     @Column(nullable = false, length = 50)
     private String categoria;
 
+    @Column(nullable = false, length = 1000)
+    private String descripcion;
+
     @OneToMany(mappedBy = "curso", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Topico> topicos;
 
@@ -40,6 +43,10 @@ public class Curso {
     public String getCategoria() {
         return categoria;
     }
+    
+    public String getDescripcion() {
+        return descripcion;
+    }
 
     public void setCategoria(String categoria) {
         this.categoria = categoria;
@@ -51,5 +58,9 @@ public class Curso {
 
     public void setTopicos(List<Topico> topicos) {
         this.topicos = topicos;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 }

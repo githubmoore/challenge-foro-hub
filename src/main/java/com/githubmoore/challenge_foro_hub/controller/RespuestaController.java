@@ -22,7 +22,7 @@ public class RespuestaController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<RespuestaDTO> getRespuestaById(@PathVariable Long id) {
+    public ResponseEntity<RespuestaDTO> getRespuestaById(@PathVariable Integer id) {
         RespuestaDTO respuesta = respuestaService.getRespuestaById(id);
         return ResponseEntity.ok(respuesta);
     }
@@ -34,13 +34,13 @@ public class RespuestaController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<RespuestaDTO> updateRespuesta(@PathVariable Long id, @RequestBody RespuestaDTO respuestaDTO) {
+    public ResponseEntity<RespuestaDTO> updateRespuesta(@PathVariable Integer id, @RequestBody RespuestaDTO respuestaDTO) {
         RespuestaDTO updatedRespuesta = respuestaService.updateRespuesta(id, respuestaDTO);
         return ResponseEntity.ok(updatedRespuesta);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteRespuesta(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteRespuesta(@PathVariable Integer id) {
         respuestaService.deleteRespuesta(id);
         return ResponseEntity.noContent().build();
     }

@@ -22,7 +22,7 @@ public class TopicoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<TopicoDTO> getTopicoById(@PathVariable Long id) {
+    public ResponseEntity<TopicoDTO> getTopicoById(@PathVariable Integer id) {
         TopicoDTO topico = topicoService.getTopicoById(id);
         return ResponseEntity.ok(topico);
     }
@@ -34,13 +34,13 @@ public class TopicoController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<TopicoDTO> updateTopico(@PathVariable Long id, @RequestBody TopicoDTO topicoDTO) {
+    public ResponseEntity<TopicoDTO> updateTopico(@PathVariable Integer id, @RequestBody TopicoDTO topicoDTO) {
         TopicoDTO updatedTopico = topicoService.updateTopico(id, topicoDTO);
         return ResponseEntity.ok(updatedTopico);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteTopico(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteTopico(@PathVariable Integer id) {
         topicoService.deleteTopico(id);
         return ResponseEntity.noContent().build();
     }

@@ -18,7 +18,7 @@ public class PerfilService {
         return perfilRepository.findAll();
     }
 
-    public Perfil getPerfilById(Long id) {
+    public Perfil getPerfilById(Integer id) {
         return perfilRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Perfil not found with id " + id));
     }
 
@@ -26,14 +26,13 @@ public class PerfilService {
         return perfilRepository.save(perfil);
     }
 
-    public Perfil updatePerfil(Long id, Perfil updatedPerfil) {
+    public Perfil updatePerfil(Integer id, Perfil updatedPerfil) {
         return perfilRepository.findById(id).map(perfil -> {
-            perfil.setNombre(updatedPerfil.getNombre());
             return perfilRepository.save(perfil);
         }).orElseThrow(() -> new ResourceNotFoundException("Perfil not found with id " + id));
     }
 
-    public void deletePerfil(Long id) {
+    public void deletePerfil(Integer id) {
         perfilRepository.deleteById(id);
     }
 }

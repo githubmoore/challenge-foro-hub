@@ -21,7 +21,7 @@ public class TopicoService {
         return topicos.stream().map(this::mapToDTO).collect(Collectors.toList());
     }
 
-    public TopicoDTO getTopicoById(Long id) {
+    public TopicoDTO getTopicoById(Integer id) {
         Topico topico = topicoRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Topico not found with id " + id));
         return mapToDTO(topico);
     }
@@ -32,7 +32,7 @@ public class TopicoService {
         return mapToDTO(savedTopico);
     }
 
-    public TopicoDTO updateTopico(Long id, TopicoDTO topicoDTO) {
+    public TopicoDTO updateTopico(Integer id, TopicoDTO topicoDTO) {
         Topico topico = topicoRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Topico not found with id " + id));
         topico.setTitulo(topicoDTO.getTitulo());
         topico.setMensaje(topicoDTO.getMensaje());
@@ -42,7 +42,7 @@ public class TopicoService {
         return mapToDTO(updatedTopico);
     }
 
-    public void deleteTopico(Long id) {
+    public void deleteTopico(Integer id) {
         topicoRepository.deleteById(id);
     }
 
@@ -65,7 +65,6 @@ public class TopicoService {
         topico.setMensaje(topicoDTO.getMensaje());
         topico.setFechaCreacion(topicoDTO.getFechaCreacion());
         topico.setStatus(Topico.Status.valueOf(topicoDTO.getEstado()));
-        // Aquí deberías establecer el curso y el autor, pero necesitarías los objetos Curso y Usuario
         return topico;
     }
 }
