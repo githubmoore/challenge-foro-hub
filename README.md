@@ -1,6 +1,5 @@
 # 🎨 ForoHub: Construye y Conecta Ideas 📚
 
-![Logo de ForoHub](https://via.placeholder.com/600x200.png?text=F%C3%B3rumHub+Logo)
 
 Bienvenido al repositorio de **ForoHub**, la plataforma de foros donde puedes compartir ideas, colaborar y aprender junto a una comunidad apasionada. Este proyecto fue creado como un desafío para aprender y practicar habilidades avanzadas en desarrollo de aplicaciones con **Spring Boot 3**, bases de datos relacionales y autenticación segura con **JWT**.
 
